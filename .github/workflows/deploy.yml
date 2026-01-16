@@ -1,0 +1,11 @@
+name: Redeploy Stack
+on: 
+  repository_dispatch:
+    types: [redeploy] # 这个事件将来由 Zabbix 触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log status
+        run: echo "Zabbix reported a failure. Attempting to heal..."
