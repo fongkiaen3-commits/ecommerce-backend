@@ -1,7 +1,7 @@
 name: Redeploy Stack
 on: 
   repository_dispatch:
-    types: [redeploy] # 这个事件将来由 Zabbix 触发
+    types: [redeploy] 
 
 jobs:
   deploy:
