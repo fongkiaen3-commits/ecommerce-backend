@@ -1,0 +1,24 @@
+services:
+  # The App (Member A's work)
+  web-app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db-service
+      - DB_NAME=shop_db
+      - DB_USER=admin
+      - DB_PASS=secret123
+    depends_on:
+      - db-service
+
+  # The Database
+  db-service:
+    image: postgres:15
+    container_name: indestructible-db
+    environment:
+      - POSTGRES_DB=shop_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret123
+    ports:
+      - "5432:5432"
